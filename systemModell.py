@@ -6,24 +6,24 @@ Created on Mon Nov 15 10:31:56 2021
 """
 import numpy as np
 
-N=10
-bw=20e6/N
-pt= 0.1
-n= 10.0 ** (-173 / 10.0)*0.001
-I= 10.0 ** (-140 / 10.0)*0.001
-ts = 0.1
-pmax=0.2
+N=10            #number of UEs
+bw=20e6/N       #channel bandwidth 
+pt= 0.1         #transmission power of the UE
+pmax=0.2        #Max. transmission power
+n= 10.0 ** (-173 / 10.0)*0.001  #Noise spectral density (-173 dBm/Hz)
+I= 10.0 ** (-140 / 10.0)*0.001  #Average interference from adjacent cells(-140dBm/Hz)
+ts = 0.1        #transmission time without relaying
 
 ues = list(range(N))
-cap = np.zeros(N)
-d = np.zeros([N, N])
-Cc = np.zeros([N, N])
-Cr = np.zeros(N)
-tc = np.zeros([N, N])
-pr = np.zeros([N, N])
-CB = np.zeros([N, N])
-G = np.zeros([N, N])
-Gc = np.zeros([N, N])
+cap = np.zeros(N)           #channel capacity between UE and BS
+d = np.zeros([N, N])        #distance between two UEs
+Cc = np.zeros([N, N])       #channel capacity of CUE
+Cr = np.zeros(N)            #channel capacity of RUE
+tc = np.zeros([N, N])       #transmission time of CUE with relaying
+pr = np.zeros([N, N])       #possible transmission power due to capacity boost
+CB = np.zeros([N, N])       #Capacity Boost
+G = np.zeros([N, N])        #Capacity gain if the i-th CUE exploits the j-th RUE
+Gc = np.zeros([N, N])       
 Gr = np.zeros([N, N])
 
 class User() :
